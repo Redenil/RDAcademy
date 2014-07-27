@@ -11,6 +11,8 @@
     using RDAcademy.ActionFilter;
     using RDAcademy.DAL;
     using RDAcademy.Models;
+    using AttributeRouting.Web.Http;
+
 
     /// <summary>
     /// 
@@ -28,6 +30,7 @@
         }
 
         // GET api/Individual/5
+        //[HttpRoute("api/IndividualAPI/{id:int}")]
         public Individual Get(int id)
         {
             Individual individual = db.Individuals.Find(id);
@@ -38,6 +41,19 @@
 
             return individual;
         }
+
+        // GET api/Individual/5
+        //[HttpRoute("api/IndividualAPI/{name}")]
+        //public Individual Get(string name)
+        //{
+        //    Individual individual = db.Individuals.SingleOrDefault(p => p.LastName == name);
+        //    if (individual == null)
+        //    {
+        //        throw new HttpResponseException(Request.CreateResponse(HttpStatusCode.NotFound));
+        //    }
+
+        //    return individual;
+        //}
 
         // PUT api/Individual/5
         /// <summary>
