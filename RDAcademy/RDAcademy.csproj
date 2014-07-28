@@ -154,6 +154,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ActionFilter\BasicAuthorizedAttribute.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\LocalNinjectDependencyResolver.cs" />
@@ -177,6 +178,7 @@
     <Compile Include="Controllers\IndividualAPIController.cs" />
     <Compile Include="Controllers\IndividualController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
+    <Compile Include="Controllers\ValuesController1.cs" />
     <Compile Include="DAL\IndividualInitializer.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

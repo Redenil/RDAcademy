@@ -16,10 +16,14 @@ namespace RDAcademy
             routes.IgnoreRoute("{resource}.axd/{*pathInfo}");
 
             routes.MapRoute(
-                name: "Default",
+                name: "DefaultMVC",
                 url: "{controller}/{action}/{id}",
-                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional }
-            );
+                defaults: new { controller = "Home", action = "Index", id = UrlParameter.Optional });
+
+            routes.MapHttpRoute(
+               name: "DefaultWebApi",
+               routeTemplate: "api/{controller}/{action}/{id}",
+                defaults: new { id = UrlParameter.Optional });
 
             GlobalConfiguration.Configuration.Formatters.JsonFormatter.MediaTypeMappings.Add(new QueryStringMapping("json", "true", "application/json"));
         }

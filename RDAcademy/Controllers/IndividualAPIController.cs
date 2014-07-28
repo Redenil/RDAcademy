@@ -13,19 +13,35 @@ using RDAcademy.DAL;
 
 namespace RDAcademy.Controllers
 {
+    using RDAcademy.ActionFilter;
+
     public class IndividualAPIController : ApiController
     {
         //static readonly IIndividualRepository _individualRepository = new IndividualRepository();
         private IndividualContext db = new IndividualContext();
 
         // GET api/Individual
-        public IEnumerable<Individual> GetIndividuals()
+        [BasicAuthorized]
+        public IEnumerable<Individual> Get()
         {
             return db.Individuals.AsEnumerable();
         }
 
         // GET api/Individual/5
-        public Individual GetIndividual(int id)
+
+        [HttpGet]
+        public Individual Individual(int id)
+        {
+            Individual individual = db.Individuals.Find(id);
+            if (individual == null)
+            {
+                throw new HttpResponseException(Request.CreateResponse(HttpStatusCode.NotFound));
+            }
+
+            return individual;
+        }
+
+        public Individual Get(int id)
         {
             Individual individual = db.Individuals.Find(id);
             if (individual == null)
@@ -37,7 +53,7 @@ namespace RDAcademy.Controllers
         }
 
         // PUT api/Individual/5
-        public HttpResponseMessage PutIndividual(int id, Individual individual)
+        /*public HttpResponseMessage PutIndividual(int id, Individual individual)
         {
             if (!ModelState.IsValid)
             {
@@ -61,48 +77,48 @@ namespace RDAcademy.Controllers
             }
 
             return Request.CreateResponse(HttpStatusCode.OK);
-        }
+        }*/
 
         // POST api/Individual
-        public HttpResponseMessage PostIndividual(Individual individual)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Individuals.Add(individual);
-                db.SaveChanges();
+        /*        public HttpResponseMessage PostIndividual(Individual individual)
+                {
+                    if (ModelState.IsValid)
+                    {
+                        db.Individuals.Add(individual);
+                        db.SaveChanges();
 
-                HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.Created, individual);
-                response.Headers.Location = new Uri(Url.Link("DefaultApi", new { id = individual.Id }));
-                return response;
-            }
-            else
-            {
-                return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
-            }
-        }
+                        HttpResponseMessage response = Request.CreateResponse(HttpStatusCode.Created, individual);
+                        response.Headers.Location = new Uri(Url.Link("DefaultApi", new { id = individual.Id }));
+                        return response;
+                    }
+                    else
+                    {
+                        return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
+                    }
+                }*/
 
         // DELETE api/Individual/5
-        public HttpResponseMessage DeleteIndividual(int id)
-        {
-            Individual individual = db.Individuals.Find(id);
-            if (individual == null)
-            {
-                return Request.CreateResponse(HttpStatusCode.NotFound);
-            }
+        /*        public HttpResponseMessage DeleteIndividual(int id)
+                {
+                    Individual individual = db.Individuals.Find(id);
+                    if (individual == null)
+                    {
+                        return Request.CreateResponse(HttpStatusCode.NotFound);
+                    }
 
-            db.Individuals.Remove(individual);
+                    db.Individuals.Remove(individual);
 
-            try
-            {
-                db.SaveChanges();
-            }
-            catch (DbUpdateConcurrencyException ex)
-            {
-                return Request.CreateErrorResponse(HttpStatusCode.NotFound, ex);
-            }
+                    try
+                    {
+                        db.SaveChanges();
+                    }
+                    catch (DbUpdateConcurrencyException ex)
+                    {
+                        return Request.CreateErrorResponse(HttpStatusCode.NotFound, ex);
+                    }
 
-            return Request.CreateResponse(HttpStatusCode.OK, individual);
-        }
+                    return Request.CreateResponse(HttpStatusCode.OK, individual);
+                }*/
 
         protected override void Dispose(bool disposing)
         {
