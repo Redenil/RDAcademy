@@ -1,0 +1,16 @@
+PUT Validation + Authentification
+
+User-Agent: Fiddler
+Content-Type: text/json
+Authorization: Basic R3VpbGxhdW1lOlRyb2hlbA==
+Host: localhost:49976
+Content-Length: 77
+
+
+ {"FirstName":"JEAN",
+   "LastName":"FONCE",
+   "BirthDate":"11-28-1988"
+}
+
+
+ODATA : http://localhost/MyApp/odata/People()?$filter=Name%20eq%20'John'

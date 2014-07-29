@@ -1,20 +1,20 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
-using System.Data.Entity;
-using System.Data.Entity.Infrastructure;
-using System.Linq;
-using System.Net;
-using System.Net.Http;
-using System.Web;
-using System.Web.Http;
-using RDAcademy.Models;
-using RDAcademy.DAL;
-
-namespace RDAcademy.Controllers
+﻿namespace RDAcademy.Controllers
 {
-    using RDAcademy.ActionFilter;
+    using System.Collections.Generic;
+    using System.Data;
+    using System.Data.Entity.Infrastructure;
+    using System.Linq;
+    using System.Net;
+    using System.Net.Http;
+    using System.Web.Http;
 
+    using RDAcademy.ActionFilter;
+    using RDAcademy.DAL;
+    using RDAcademy.Models;
+
+    /// <summary>
+    /// 
+    /// </summary>
     public class IndividualAPIController : ApiController
     {
         //static readonly IIndividualRepository _individualRepository = new IndividualRepository();
@@ -53,22 +53,25 @@ namespace RDAcademy.Controllers
         }
 
         // PUT api/Individual/5
-        /*public HttpResponseMessage PutIndividual(int id, Individual individual)
+        /// <summary>
+        /// Puts the individual.
+        /// </summary>
+        /// <param name="individual">The individual.</param>
+        /// <returns></returns>
+        [CultureActionFilter("en-GB")]
+        [BasicAuthorized]
+        public HttpResponseMessage Put(Individual individual)
         {
             if (!ModelState.IsValid)
             {
                 return Request.CreateErrorResponse(HttpStatusCode.BadRequest, ModelState);
             }
 
-            if (id != individual.Id)
-            {
-                return Request.CreateResponse(HttpStatusCode.BadRequest);
-            }
-
             db.Entry(individual).State = EntityState.Modified;
 
             try
             {
+                db.Individuals.Add(individual);
                 db.SaveChanges();
             }
             catch (DbUpdateConcurrencyException ex)
@@ -77,7 +80,7 @@ namespace RDAcademy.Controllers
             }
 
             return Request.CreateResponse(HttpStatusCode.OK);
-        }*/
+        }
 
         // POST api/Individual
         /*        public HttpResponseMessage PostIndividual(Individual individual)
