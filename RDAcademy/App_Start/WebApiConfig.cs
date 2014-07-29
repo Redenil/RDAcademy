@@ -2,6 +2,7 @@
 
 namespace RDAcademy
 {
+    using System.Web.Http.OData.Builder;
 
     using RDAcademy.Models;
 
@@ -25,9 +26,9 @@ namespace RDAcademy
             config.EnableSystemDiagnosticsTracing();
 
             // New code:
-           // ODataModelBuilder builder = new ODataConventionModelBuilder();
-            //builder.EntitySet<Individual>("Individuals");
-            //ODataHttpRouteCollectionExtensions.MapODataRoute(config.Routes, routeName: "ODataRoute", routePrefix: null, model: builder.GetEdmModel());
+            ODataModelBuilder builder = new ODataConventionModelBuilder();
+            builder.EntitySet<Individual>("Individuals");
+            ODataHttpRouteCollectionExtensions.MapODataRoute(config.Routes, routeName: "ODataRoute", routePrefix: "odata", model: builder.GetEdmModel());
         }
     }
 }

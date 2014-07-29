@@ -13,4 +13,7 @@ Content-Length: 77
 }
 
 
-ODATA : http://localhost/MyApp/odata/People()?$filter=Name%20eq%20'John'
+ODATA : 
+
+http://localhost:49976/odata/Individuals?$top=10&$skip=2
+http://localhost:49976/odata/Individuals?$top=10&filter=FirstName%20eq%20%27Jean%27
