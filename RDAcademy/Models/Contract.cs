@@ -16,8 +16,6 @@ namespace RDAcademy.Models
         public DateTime EffectDate { get; set; }
 
         public int IndividualId { get; set; }
-
-        public virtual Individual Individual { get; set; }
     }
 
 }

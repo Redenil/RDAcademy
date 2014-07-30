@@ -28,19 +28,6 @@
         }
 
         // GET api/Individual/5
-
-        [HttpGet]
-        public Individual Individual(int id)
-        {
-            Individual individual = db.Individuals.Find(id);
-            if (individual == null)
-            {
-                throw new HttpResponseException(Request.CreateResponse(HttpStatusCode.NotFound));
-            }
-
-            return individual;
-        }
-
         public Individual Get(int id)
         {
             Individual individual = db.Individuals.Find(id);

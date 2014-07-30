@@ -1,4 +1,5 @@
-﻿using System.Web.Http;
+﻿using System.Net.Http.Formatting;
+using System.Web.Http;
 
 namespace RDAcademy
 {
@@ -25,9 +26,19 @@ namespace RDAcademy
             // For more information, refer to: http://www.asp.net/web-api
             config.EnableSystemDiagnosticsTracing();
 
+            var json = GlobalConfiguration.Configuration.Formatters.JsonFormatter;
+            json.SerializerSettings.PreserveReferencesHandling = Newtonsoft.Json.PreserveReferencesHandling.All;
+            // Adding formatters
+            //config.Formatters.Clear();
+            //config.Formatters.Add(new XmlMediaTypeFormatter());
+            //config.Formatters.Add(new JsonMediaTypeFormatter());
+            //config.Formatters.Add(new FormUrlEncodedMediaTypeFormatter());
+
             // New code:
+            // Odata
             ODataModelBuilder builder = new ODataConventionModelBuilder();
             builder.EntitySet<Individual>("Individuals");
+            builder.EntitySet<Contract>("Contracts");
             ODataHttpRouteCollectionExtensions.MapODataRoute(config.Routes, routeName: "ODataRoute", routePrefix: "odata", model: builder.GetEdmModel());
         }
     }

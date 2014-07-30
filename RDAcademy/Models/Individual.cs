@@ -22,11 +22,11 @@ namespace RDAcademy.Models
         [DataType(DataType.Date)]
         public DateTime BirthDate { get; set; }
 
-        public virtual ICollection<Contract> Contracts { get; set; }
+        public virtual List<Contract> Contracts { get; set; }
 
         public Individual()
         {
-            Contracts = new Collection<Contract>();
+            Contracts = new List<Contract>();
         }
     }
 }

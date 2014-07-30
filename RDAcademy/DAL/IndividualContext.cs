@@ -24,7 +24,6 @@ namespace RDAcademy.DAL
 
         public IndividualContext() :base("name=RDAcademy")
         {
-
         }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)

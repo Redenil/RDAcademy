@@ -6,7 +6,7 @@ using System.Web;
 
 namespace RDAcademy.DAL
 {
-    public class IndividualInitializer : System.Data.Entity.DropCreateDatabaseAlways<IndividualContext>
+    public class IndividualInitializer : System.Data.Entity.DropCreateDatabaseIfModelChanges<IndividualContext>
     {
         protected override void Seed(IndividualContext context)
         {
