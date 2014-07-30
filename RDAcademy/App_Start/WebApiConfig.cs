@@ -19,10 +19,17 @@ namespace RDAcademy
                 defaults: new { id = RouteParameter.Optional }
             );
 
-            var newFormater = new FixedWidthTextMediaFormatter();
+            var newFormater = new CsvTextMediaFormatter();
+            newFormater.MediaTypeMappings.Add(new QueryStringMapping("frmt", "fwt", new MediaTypeHeaderValue("text/plain")));
             config.Formatters.Add(newFormater);
 
-            newFormater.MediaTypeMappings.Add(new QueryStringMapping("frmt", "fwt", new MediaTypeHeaderValue("text/plain")));
+            config.Formatters.JsonFormatter.MediaTypeMappings.Add(
+    new QueryStringMapping("frmt", "json",
+    new MediaTypeHeaderValue("application/json")));
+
+            config.Formatters.XmlFormatter.MediaTypeMappings.Add(
+            new QueryStringMapping("frmt", "xml",
+            new MediaTypeHeaderValue("application/xml")));
 
             // Serialize les types complexes qui sont rattachés à l'objet
             //var json = config.Formatters.JsonFormatter;

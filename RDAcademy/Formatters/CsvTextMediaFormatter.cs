@@ -13,9 +13,9 @@ using System.Web;
 
 namespace RDAcademy.Formatters
 {
-    public class FixedWidthTextMediaFormatter : MediaTypeFormatter
+    public class CsvTextMediaFormatter : MediaTypeFormatter
     {
-        public FixedWidthTextMediaFormatter()
+        public CsvTextMediaFormatter()
         {
             SupportedEncodings.Add(Encoding.UTF8);
             SupportedEncodings.Add(Encoding.Unicode);
@@ -28,7 +28,7 @@ namespace RDAcademy.Formatters
 
         public override bool CanWriteType(Type type)
         {
-            return typeof(IEnumerable<Individual>).IsAssignableFrom(type);
+            return typeof(IEnumerable<Individual>).IsAssignableFrom(type) || typeof(Individual).IsAssignableFrom(type);
         }
 
         public override async Task WriteToStreamAsync(Type type, object value, Stream stream, HttpContent content, TransportContext transportContext)
@@ -43,7 +43,7 @@ namespace RDAcademy.Formatters
                     {
                         foreach (var individual in individuals)
                         {
-                            await writer.WriteLineAsync(String.Format("{0}.{1}.{2}", individual.Id, individual.FirstName, individual.LastName));
+                            await writer.WriteLineAsync(String.Format("{0,-10};{1,-10};{2,-10}", individual.Id, individual.FirstName, individual.LastName));
                         }
                         await writer.FlushAsync();
                     }
