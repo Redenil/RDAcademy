@@ -20,6 +20,8 @@ namespace RDAcademy.DAL
 
         public DbSet<RDAcademy.Models.Individual> Individuals { get; set; }
 
+        public DbSet<RDAcademy.Models.Contract> Contracts { get; set; }
+
         public IndividualContext() :base("name=RDAcademy")
         {
 
