@@ -201,7 +201,7 @@
     <Compile Include="Controllers\IndividualsODataController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="DAL\IndividualInitializer.cs" />
-    <Compile Include="Formatters\FixedWidthTextMediaFormatter.cs" />
+    <Compile Include="Formatters\CsvTextMediaFormatter.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
