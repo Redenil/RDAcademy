@@ -13,9 +13,12 @@ namespace RDAcademy.Models
 
         public string CodeContract { get; set; }
 
+        [DataType(DataType.Date)]
         public DateTime EffectDate { get; set; }
 
         public int IndividualId { get; set; }
+
+        public Individual Individual { get; set; }
     }
 
 }

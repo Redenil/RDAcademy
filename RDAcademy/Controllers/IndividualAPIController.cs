@@ -30,7 +30,7 @@
         }
 
         // GET api/Individual/5
-        //[HttpRoute("api/IndividualAPI/{id:int}")]
+        [HttpRoute("api/IndividualAPI/{id:int}")]
         public Individual Get(int id)
         {
             Individual individual = db.Individuals.Find(id);
@@ -42,18 +42,25 @@
             return individual;
         }
 
-        // GET api/Individual/5
-        //[HttpRoute("api/IndividualAPI/{name}")]
-        //public Individual Get(string name)
-        //{
-        //    Individual individual = db.Individuals.SingleOrDefault(p => p.LastName == name);
-        //    if (individual == null)
-        //    {
-        //        throw new HttpResponseException(Request.CreateResponse(HttpStatusCode.NotFound));
-        //    }
+        // GET api/Individual/Guy
+        [HttpRoute("api/IndividualAPI/{name}")]
+        public Individual GetByName(string name)
+        {
+            Individual individual = db.Individuals.SingleOrDefault(p => p.LastName == name);
+            if (individual == null)
+            {
+                throw new HttpResponseException(Request.CreateResponse(HttpStatusCode.NotFound));
+            }
 
-        //    return individual;
-        //}
+            return individual;
+        }
+
+        [HttpRoute("api/IndividualAPI/{id}/Contracts")]
+        public IEnumerable<Contract> GetContractByIndividual(int id)
+        {
+            var contracts = db.Contracts.Where(c => c.Individual.Id == id).AsEnumerable();
+            return contracts;
+        }
 
         // PUT api/Individual/5
         /// <summary>

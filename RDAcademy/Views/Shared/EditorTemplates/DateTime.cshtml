@@ -1,3 +1,6 @@
 ﻿@model DateTime
+@if (Model !=null)
+{
 @Html.TextBox("", Model.ToString("dd/MM/yyyy"), 
  new { @class = "date" })
+}
