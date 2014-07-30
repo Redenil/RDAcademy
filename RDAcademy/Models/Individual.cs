@@ -4,10 +4,13 @@ using System.Collections.ObjectModel;
 using System.ComponentModel.DataAnnotations;
 using System.Data.Entity;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Web;
+using System.Xml.Serialization;
 
 namespace RDAcademy.Models
 {
+    [KnownType(typeof(Contract))]
     public class Individual
     {
         [Key]
@@ -22,7 +25,7 @@ namespace RDAcademy.Models
         [DataType(DataType.Date)]
         public DateTime BirthDate { get; set; }
 
-        public virtual List<Contract> Contracts { get; set; }
+        public List<Contract> Contracts { get; set; }
 
         public Individual()
         {

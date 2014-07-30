@@ -2,13 +2,16 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
+using System.Runtime.Serialization;
 using System.Web;
+using System.Xml.Serialization;
 
 namespace RDAcademy.Models
 {
+    [KnownType(typeof(Individual))]
     public class Contract
     {
-         [Key]
+        [Key]
         public int Id { get; set; }
 
         public string CodeContract { get; set; }

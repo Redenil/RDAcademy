@@ -13,10 +13,6 @@
     using RDAcademy.Models;
     using AttributeRouting.Web.Http;
 
-
-    /// <summary>
-    /// 
-    /// </summary>
     public class IndividualAPIController : ApiController
     {
         //static readonly IIndividualRepository _individualRepository = new IndividualRepository();
@@ -30,7 +26,7 @@
         }
 
         // GET api/Individual/5
-        [HttpRoute("api/IndividualAPI/{id:int}")]
+        //[HttpRoute("api/IndividualAPI/{id:int}")]
         public Individual Get(int id)
         {
             Individual individual = db.Individuals.Find(id);
@@ -43,8 +39,8 @@
         }
 
         // GET api/Individual/Guy
-        [HttpRoute("api/IndividualAPI/{name}")]
-        public Individual GetByName(string name)
+        //[HttpRoute("api/IndividualAPI/{name}")]
+        public Individual Get(string name)
         {
             Individual individual = db.Individuals.SingleOrDefault(p => p.LastName == name);
             if (individual == null)
@@ -55,12 +51,12 @@
             return individual;
         }
 
-        [HttpRoute("api/IndividualAPI/{id}/Contracts")]
-        public IEnumerable<Contract> GetContractByIndividual(int id)
-        {
-            var contracts = db.Contracts.Where(c => c.Individual.Id == id).AsEnumerable();
-            return contracts;
-        }
+        //[HttpRoute("api/IndividualAPI/{id}/Contracts")]
+        //public IEnumerable<Contract> GetContractByIndividual(int id)
+        //{
+        //    var contracts = db.Contracts.Where(c => c.Individual.Id == id).AsEnumerable();
+        //    return contracts;
+        //}
 
         // PUT api/Individual/5
         /// <summary>
