@@ -12,6 +12,7 @@ namespace RDAcademy.DAL
         {
             var i1 = new Individual {Id = 1, FirstName = "Reda", LastName = "Ouafi", BirthDate = DateTime.Now.Date};
             var i2 = new Individual{Id = 2, FirstName = "Guillaume", LastName = "Trohel", BirthDate = DateTime.Now.Date};
+            var i3 = new Individual { Id = 3, FirstName = "Guy", LastName = "Talom", BirthDate = DateTime.Now.Date.AddYears(-100) };
 
             var students = new List<Individual>();
             students.Add(i1);
