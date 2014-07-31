@@ -172,8 +172,6 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\AttributeRoutingHttpConfig.cs" />
-    <Compile Include="ActionFilter\BasicAuthorizedAttribute.cs" />
-    <Compile Include="ActionFilter\CultureActionFilter.cs" />
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\LocalNinjectDependencyResolver.cs" />
@@ -198,10 +196,8 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\IndividualAPIController.cs" />
     <Compile Include="Controllers\IndividualController.cs" />
-    <Compile Include="Controllers\IndividualsODataController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="DAL\IndividualInitializer.cs" />
-    <Compile Include="Formatters\CsvTextMediaFormatter.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -340,7 +336,9 @@
     <Content Include="Views\Contract\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include="ActionFilter\" />
     <Folder Include="App_Data\" />
+    <Folder Include="Formatters\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
