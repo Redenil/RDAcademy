@@ -41,10 +41,16 @@ namespace RDAcademy.Formatters
                     var individuals = value as IEnumerable<Individual>;
                     if (individuals != null)
                     {
-                        foreach (var individual in individuals)
+                        foreach (var individu in individuals)
                         {
-                            await writer.WriteLineAsync(String.Format("{0,-10};{1,-10};{2,-10}", individual.Id, individual.FirstName, individual.LastName));
+                            await writer.WriteLineAsync(String.Format("{0,-10};{1,-10};{2,-10}", individu.Id, individu.FirstName, individu.LastName));
                         }
+                        await writer.FlushAsync();
+                    }
+                    var individual = value as Individual;
+                    if (individual != null)
+                    {
+                        await writer.WriteLineAsync(String.Format("{0,-10};{1,-10};{2,-10}", individual.Id, individual.FirstName, individual.LastName));
                         await writer.FlushAsync();
                     }
                 }
